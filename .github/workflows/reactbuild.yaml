@@ -88,6 +88,8 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATEKEY }}
+        script: |
+          echo "SSH successful"
               
     - name: Docker login
       env:
