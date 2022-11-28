@@ -90,11 +90,11 @@ jobs:
             USER_NAME : ${{ secrets.USERNAME  }}
             
         run: |
-
-          ssh -o StrictHostKeyChecking=no ${USERNAME}@${HOST_DNS} 
+            echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+            ssh -o StrictHostKeyChecking=no -i private_key ${USERNAME}@${HOST_DNS} 
           
             #Now we have got the access of EC2 and we will start the deploy .
-            cd /home/ubuntu/    
+            cd /home/ubuntu
       - name: Docker login
         env:
           username: ${{ secrets.DOCKER_USERNAME }}
