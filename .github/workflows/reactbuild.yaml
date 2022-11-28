@@ -88,10 +88,8 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
-        script: |
-          ssh -o "StrictHostKeyChecking no" ubuntu@ec2-54-91-6-149.compute-1.amazonaws.com "\
-          cd /home/ubuntu
-          sudo docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        port: ${{ secrets.PORT }}
+        script: whoami
         
     - name: Docker pull
       run: |
