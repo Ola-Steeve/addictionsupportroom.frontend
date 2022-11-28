@@ -33,7 +33,7 @@ jobs:
       # install applicaion dependencies
     - name: Install dependencies
       run: |
-        npm ci -g
+        npm i -g
       # build app
     - name: build
       run: |
