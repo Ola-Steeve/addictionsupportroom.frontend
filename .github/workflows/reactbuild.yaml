@@ -85,11 +85,11 @@ jobs:
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
       with:
-        password: ${{ secrets.SSH_PASSWORD }}
+        host: ${{ secrets.SSH_HOST }} 
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
         script: |
-          ssh -o "StrictHostKeyChecking no" ubuntu@ec2-34-228-12-199.compute-1.amazonaws.com "\
           cd /home/ubuntu
           sudo docker pull ${{ secrets.DOCKER_USERNAME }}/soberpal.frontend:latest
           sudo docker run -d -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/soberpal.frontend:latest
-          exit"
 
