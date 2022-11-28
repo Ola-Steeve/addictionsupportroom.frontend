@@ -91,7 +91,5 @@ jobs:
         script: |
           cd /home/ubuntu
           sudo docker pull ${{ secrets.DOCKER_USERNAME }}/soberpal.frontend:latest
-          - name: Run image
-            run: |
-              sudo docker run -d -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/soberpal.frontend:latest
+          sudo docker run -d -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/soberpal.frontend:latest
 
