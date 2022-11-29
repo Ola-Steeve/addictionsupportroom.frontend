@@ -91,6 +91,11 @@ jobs:
         script: |
           whoami
           cd /home/ubuntu
+          sudo docker stop frontend
+          sudo docker rm frontend
+          sudo docker rmi -f ${{ secrets.DOCKER_USERNAME }}/soberpal.frontend:latest
           sudo docker pull ${{ secrets.DOCKER_USERNAME }}/soberpal.frontend:latest
-          sudo docker run -d -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/soberpal.frontend:latest
+          sudo docker run -d -p 3000:3000 --name frontend ${{ secrets.DOCKER_USERNAME }}/soberpal.frontend:latest
+          sudo docker system prune -af
+          sudo docker builder prune -af
 
